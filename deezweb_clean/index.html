@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechercher une musique - Deez'Web</title>
+
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="lib/jquery.min.js" defer></script>
+    <script src="lib/bootstrap.min.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js" defer></script>
+    <script src="scripts/index.js" type="module" defer></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-info bg-info sticky-top">
+        <a class="navbar-brand" href="#">🎶</a>
+        <div class="d-none flex-row align-items-center" id="player-container">
+            <span class="music"></span>
+            <a href="#" class="text-light" title="Écouter sur Deezer.com" target="_blank"><ins>Musique titre</ins></a>
+            <audio controls></audio>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="index.html">🏠 Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="favorites.html">❤ Mes favoris</a>
+                </li>
+                <li class="nav-item nav-right dropdown d-none" id="member" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link pt-0 pb-0 dropdown-toggle text-light">
+                        <img class="avatar rounded-circle" alt="">
+                        <div class="navbar-text text-light" id="member-name"></div>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="member">
+                        <a class="dropdown-item" href="#" id="logout">🚪 Déconnexion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mt-4 pb-5">
+        
+        <h1>
+            Deez'Web<br>
+            <small>Trouves et enregistre tes musiques préferés</small>
+        </h1>
+        <hr>
+        
+        <form>
+            <div class="form-group">
+                <label for="searchText">Rechercher un titre de musique, un album, une playlist, et bien d'autres … :</label>
+                <input type="search" class="form-control" id="searchText" placeholder="e.g. David Guetta" required>
+            </div>
+            
+            <button type="submit" class="btn btn-info">Rechercher sur Deezer !</button>
+        </form>
+        
+        <section id="search-results" class="mt-4 d-none">
+            <p class="text-success d-none">Votre recherche a retourné <strong>XX</strong> résultats !</p>
+            <p class="text-danger d-none">Une erreur est survenue : <strong>Texte de l'erreur</strong></p>
+        
+            <div class="row row-cols-1 row-cols-md-2" id="results-list">
+                
+            </div>
+        </section>
+        
+    </main>
+
+</body>
+</html>
